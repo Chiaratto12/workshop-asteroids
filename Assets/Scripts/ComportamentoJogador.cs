@@ -6,16 +6,21 @@ public class ComportamentoJogador : MonoBehaviour
 {
 
     public Rigidbody2D meuRigidBody;
+    public AudioSource audio;
+
     public float aceleracao = 1.0f;    
     public float VelocidadeAngular = 180.0f;
     public float velocidadeMaxima = 10.0f;
     
     public Rigidbody2D prefabProjetil;
     public float velocidadeProjetil = 10.0f;
+    private float tempo;
+
+    int x;
 
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -26,8 +31,15 @@ public class ComportamentoJogador : MonoBehaviour
                 meuRigidBody.position, 
                 Quaternion.identity
             );
+        
+            audio.Play();
+            tempo += Time.deltaTime;
 
-            projetil.velocity = transform.up * velocidadeProjetil;
+            if(tempo > 3f) {
+                Destroy(projetil.gameObject);
+            }
+
+                projetil.velocity = transform.up * velocidadeProjetil;
         }
     }
 
@@ -54,6 +66,17 @@ public class ComportamentoJogador : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D outro) {
-        Destroy(gameObject);
+        if(outro.gameObject.tag == "Cima"){
+            this.transform.position = new Vector3(meuRigidBody.position.x, -4.0f, 0.0f);
+        }
+        else if(outro.gameObject.tag == "Baixo"){
+            this.transform.position = new Vector3(meuRigidBody.position.x, 4.0f, 0.0f);
+        }
+        else if(outro.gameObject.tag == "Direita"){
+            this.transform.position = new Vector3(-9.3f, meuRigidBody.position.y, 0.0f);
+        }
+        else if(outro.gameObject.tag == "Esquerda"){
+            this.transform.position = new Vector3(9.3f, meuRigidBody.position.y, 0.0f);
+        }
     }
 }

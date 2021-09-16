@@ -5,10 +5,12 @@ using UnityEngine;
 public class OndaDeAsteroides : MonoBehaviour
 {
     public ComportamentoAsteroide prefabAsteroide;
+    public static AudioSource au;
     public int quantosAsteroides = 3;
 
     void Start()
     {
+        au = GetComponent<AudioSource>();
         for(int i = 0; i < quantosAsteroides; i++){
             float x = Random.Range(-7.0f, 7.0f);
             float y = Random.Range(-7.0f, 7.0f);
