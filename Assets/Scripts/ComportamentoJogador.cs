@@ -21,6 +21,7 @@ public class ComportamentoJogador : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        //GameplayCamera.instancia.minhaCamera
     }
 
     void Update()
