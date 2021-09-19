@@ -8,27 +8,25 @@ public class ComportamentoProjetil : MonoBehaviour
     public AudioClip clip;
     public GameObject go;
 
+    private float tempo;
+    public float timer;
+
     void Start()
     {
-        audio = GetComponent<AudioSource>();
-        clip = GetComponent<AudioClip>();
+        audio.Play();
     }
 
     void Update()
     {
-        
+        tempo += Time.deltaTime;
+
+        if(tempo > timer) {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D outro)
     {
-        if (outro.gameObject.tag == "Asteroide"){
-            Destroy(gameObject);
-            Teste.audio.Play();
-        }
-
-        if (outro.gameObject.tag == "AsteroidePequeno"){
-            Destroy(gameObject);
-            Teste.audio.Play();
-        }
+        Destroy(this.gameObject);
     }
 }

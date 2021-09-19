@@ -124,7 +124,7 @@ MonoBehaviour:
   audio: {fileID: 5415682532119625976}
   clip: {fileID: 8300000, guid: 06428b1eac6d5a5468948f73fc412981, type: 3}
   go: {fileID: 2694168367382495421, guid: 7414ab7395998dc40bbea8e8abea12a8, type: 3}
-  timer: 1
+  timer: 1.75
 --- !u!58 &947018604937781577
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947018604937781576}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0224d78f2e701fa4fb3e02137ebf94e1, type: 3}
   m_Name: 
@@ -164,7 +164,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 176f3f17e29feb347aa88b472dcbf623, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6e97c1346c818074fbf8b8a38e0ef5d3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

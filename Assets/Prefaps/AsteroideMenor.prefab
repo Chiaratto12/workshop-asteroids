@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2694168367382495408}
   - component: {fileID: 2694168367382495409}
+  - component: {fileID: -1449133652230555801}
   - component: {fileID: 2694168367382495422}
   - component: {fileID: 5519553727014134177}
   - component: {fileID: 2694168367382495420}
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2694168367382495421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.27, y: -0.8406611, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -87,6 +88,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-1449133652230555801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694168367382495421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d737f6230f7aa8647826de156a5cff7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meuRigidBody: {fileID: 2694168367382495422}
+  go: {fileID: 0}
+  audio: {fileID: 802464790751171495}
+  clip: {fileID: 8300000, guid: 06428b1eac6d5a5468948f73fc412981, type: 3}
+  velocidadeMaxima: 12
+  quantosAsteroides: 3
+  vida: 30
 --- !u!50 &2694168367382495422
 Rigidbody2D:
   serializedVersion: 4
@@ -115,7 +135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2694168367382495421}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dc35b0f167d2dd49a8a155a79768e9c, type: 3}
   m_Name: 

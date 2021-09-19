@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PosicaoToroidal : MonoBehaviour
 {
-    const float Margem = 0.5f;
+    const float MARGEM = 0.5f;
     public Rigidbody2D meuRigidbody;
 
     void Update()
@@ -19,18 +19,25 @@ public class PosicaoToroidal : MonoBehaviour
         float limiteCima = maxY;
         
         Vector2 pos = meuRigidbody.position;
-        if(pos.x < limiteEsquerda - Margem){
-            pos.x = limiteEsquerda + Margem;
+        if(pos.x < limiteEsquerda - MARGEM)
+        {
+            pos.x = limiteDireita + MARGEM;
         }
-        else if(pos.x < limiteDireita - Margem){
-            pos.x = limiteDireita - Margem;
+        else if(pos.x > limiteDireita - MARGEM)
+        {
+            pos.x = limiteEsquerda - MARGEM;
         }
-        else if(pos.x < limiteCima- Margem){
-            pos.x = limiteCima + Margem;
+        
+        if(pos.y > limiteCima + MARGEM)
+        {
+            pos.y = limiteBaixo - MARGEM;
         }
-        else if(pos.x < limiteBaixo- Margem){
-            pos.x = limiteBaixo - Margem;
+        else if(pos.y < limiteBaixo- MARGEM)
+        {
+            pos.y = limiteCima + MARGEM;
         }
         meuRigidbody.position = pos;
     }
+
+    
 }

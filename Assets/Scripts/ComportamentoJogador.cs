@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ComportamentoJogador : MonoBehaviour
 {
 
     public Rigidbody2D meuRigidBody;
     public AudioSource audio;
+    public AudioClip clip;
 
     public float aceleracao = 1.0f;    
     public float VelocidadeAngular = 180.0f;
@@ -20,7 +22,6 @@ public class ComportamentoJogador : MonoBehaviour
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
         //GameplayCamera.instancia.minhaCamera
     }
 
@@ -33,7 +34,6 @@ public class ComportamentoJogador : MonoBehaviour
                 Quaternion.identity
             );
         
-            audio.Play();
             tempo += Time.deltaTime;
 
             if(tempo > 3f) {
@@ -67,17 +67,10 @@ public class ComportamentoJogador : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D outro) {
-        if(outro.gameObject.tag == "Cima"){
-            this.transform.position = new Vector3(meuRigidBody.position.x, -4.0f, 0.0f);
-        }
-        else if(outro.gameObject.tag == "Baixo"){
-            this.transform.position = new Vector3(meuRigidBody.position.x, 4.0f, 0.0f);
-        }
-        else if(outro.gameObject.tag == "Direita"){
-            this.transform.position = new Vector3(-9.3f, meuRigidBody.position.y, 0.0f);
-        }
-        else if(outro.gameObject.tag == "Esquerda"){
-            this.transform.position = new Vector3(9.3f, meuRigidBody.position.y, 0.0f);
-        }
+        meuRigidBody.velocity = Vector3.zero;
+        meuRigidBody.angularVelocity = 0.0f;
+        this.gameObject.SetActive(false);
+        AudioSource.PlayClipAtPoint(clip, transform.position);
+        FindObjectOfType<GameManager>().JogadorMorreu();
     }
 }

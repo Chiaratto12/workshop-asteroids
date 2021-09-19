@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ComportamentoAsteroide : MonoBehaviour
 {
     public Rigidbody2D meuRigidBody;
-    public GameObject go;
+    public ComportamentoAsteroide go;
     public AudioSource audio;
+    public AudioClip clip;
 
     public float velocidadeMaxima = 1.0f;
     public int quantosAsteroides = 3;
+    public float vida = 30.0f;
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
-        Vector2 direcao = Random.insideUnitCircle;
-        direcao *= velocidadeMaxima;
-        meuRigidBody.velocity = direcao;
+        //Vector2 direcao = Random.insideUnitCircle;
+        //direcao *= velocidadeMaxima;
+        //meuRigidBody.velocity = direcao;
     }
 
     void Update()
@@ -24,31 +26,28 @@ public class ComportamentoAsteroide : MonoBehaviour
         
     }
 
+    public void SetTrajectory(Vector2 direcao){
+        meuRigidBody.AddForce(direcao * this.velocidadeMaxima);
+
+        Destroy(this.gameObject, this.vida);
+    }
+
     void OnTriggerEnter2D(Collider2D outro)
     {
-        if(outro.gameObject.tag == "Cima"){
-            this.transform.position = new Vector3(meuRigidBody.position.x, -4.0f, 0.0f);
-        }
-        else if(outro.gameObject.tag == "Baixo"){
-            this.transform.position = new Vector3(meuRigidBody.position.x, 4.0f, 0.0f);
-        }
-        else if(outro.gameObject.tag == "Direita"){
-            this.transform.position = new Vector3(-9.3f, meuRigidBody.position.y, 0.0f);
-        }
-        else if(outro.gameObject.tag == "Esquerda"){
-            this.transform.position = new Vector3(9.3f, meuRigidBody.position.y, 0.0f);
-        }
-
-        if(outro.gameObject.tag == "Player"){
-            audio.Play();
-            Destroy(outro.gameObject);
-        }
-        if(outro.gameObject.tag == "Projetil"){
+        if(this.gameObject.tag == "Asteroide"){
             for(int i = 0; i < quantosAsteroides; i++){
-                    Instantiate(go, outro.gameObject.transform.position, Quaternion.identity);
-                }
-                Pontuacao.pountuacao += 10;
-                Destroy(this.gameObject);
+                ComportamentoAsteroide pequeno = Instantiate(go, outro.gameObject.transform.position, Quaternion.identity);
+                pequeno.SetTrajectory(Random.insideUnitCircle.normalized);
+            }
+            AudioSource.PlayClipAtPoint(clip, transform.position);
+            Destroy(this.gameObject);
+            Pontuacao.pountuacao += 10;
+            
+        } 
+        else if(this.gameObject.tag == "AsteroidePequeno"){
+            AudioSource.PlayClipAtPoint(clip, transform.position);
+            Destroy(this.gameObject);
+            Pontuacao.pountuacao += 5;
         }
     }
 }
