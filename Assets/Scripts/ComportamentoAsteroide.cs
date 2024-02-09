@@ -35,19 +35,23 @@ public class ComportamentoAsteroide : MonoBehaviour
     void OnTriggerEnter2D(Collider2D outro)
     {
         if(this.gameObject.tag == "Asteroide"){
-            for(int i = 0; i < quantosAsteroides; i++){
-                ComportamentoAsteroide pequeno = Instantiate(go, outro.gameObject.transform.position, Quaternion.identity);
-                pequeno.SetTrajectory(Random.insideUnitCircle.normalized);
+            if(outro.gameObject.tag == "Projetil"){
+                for(int i = 0; i < quantosAsteroides; i++){
+                    ComportamentoAsteroide pequeno = Instantiate(go, outro.gameObject.transform.position, Quaternion.identity);
+                    pequeno.SetTrajectory(Random.insideUnitCircle.normalized);
+                }
+                AudioSource.PlayClipAtPoint(clip, transform.position);
+                Destroy(this.gameObject);
+                Pontuacao.pountuacao += 10;
             }
-            AudioSource.PlayClipAtPoint(clip, transform.position);
-            Destroy(this.gameObject);
-            Pontuacao.pountuacao += 10;
             
         } 
         else if(this.gameObject.tag == "AsteroidePequeno"){
-            AudioSource.PlayClipAtPoint(clip, transform.position);
-            Destroy(this.gameObject);
-            Pontuacao.pountuacao += 5;
+            if(outro.gameObject.tag == "Projetil"){
+                AudioSource.PlayClipAtPoint(clip, transform.position);
+                Destroy(this.gameObject);
+                Pontuacao.pountuacao += 5;
+            }
         }
     }
 }

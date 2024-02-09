@@ -23,23 +23,6 @@ public class ComportamentoAsteroidMenor : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D outro) {
-         if(outro.gameObject.tag == "Cima"){
-            this.transform.position = new Vector3(meuRigidBody.position.x, -4.0f, 0.0f);
-        }
-        else if(outro.gameObject.tag == "Baixo"){
-            this.transform.position = new Vector3(meuRigidBody.position.x, 4.0f, 0.0f);
-        }
-        else if(outro.gameObject.tag == "Direita"){
-            this.transform.position = new Vector3(-9.3f, meuRigidBody.position.y, 0.0f);
-        }
-        else if(outro.gameObject.tag == "Esquerda"){
-            this.transform.position = new Vector3(9.3f, meuRigidBody.position.y, 0.0f);
-        }
-
-        if(outro.gameObject.tag == "Player"){
-            audio.Play();
-            Destroy(outro.gameObject);
-        }
         if(outro.gameObject.tag == "Projetil"){
             Pontuacao.pountuacao += 5;
             Destroy(this.gameObject);

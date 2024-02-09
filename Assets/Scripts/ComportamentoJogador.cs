@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class ComportamentoJogador : MonoBehaviour
 {
 
@@ -17,8 +16,6 @@ public class ComportamentoJogador : MonoBehaviour
     public Rigidbody2D prefabProjetil;
     public float velocidadeProjetil = 10.0f;
     private float tempo;
-
-    int x;
 
     void Start()
     {
@@ -40,7 +37,7 @@ public class ComportamentoJogador : MonoBehaviour
                 Destroy(projetil.gameObject);
             }
 
-                projetil.velocity = transform.up * velocidadeProjetil;
+            projetil.velocity = transform.up * velocidadeProjetil;
         }
     }
 

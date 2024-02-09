@@ -1079,7 +1079,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.921083
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1425,6 +1425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1191084650}
+  - component: {fileID: 1191084652}
   - component: {fileID: 1191084649}
   - component: {fileID: 1191084651}
   m_Layer: 0
@@ -1443,14 +1444,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1191084648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2a6219c478b8f94491e05ccac21477a, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidePrefab: {fileID: 2694168367382495423, guid: 422ea5cd8ee73b94fa0ab19d753a30e0, type: 3}
-  trajetoriaVariancia: 15
-  ondaRate: 2
-  ondaDistancia: 15
-  ondaQuantidade: 1
 --- !u!4 &1191084650
 Transform:
   m_ObjectHideFlags: 0
@@ -1561,6 +1557,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1191084652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191084648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a6219c478b8f94491e05ccac21477a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidePrefab: {fileID: 2694168367382495423, guid: 422ea5cd8ee73b94fa0ab19d753a30e0, type: 3}
+  trajetoriaVariancia: 15
+  ondaRate: 2
+  ondaDistancia: 15
+  ondaQuantidade: 1
 --- !u!1 &1244552913
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1810,7 @@ Transform:
   m_GameObject: {fileID: 1460903415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.4, y: 0.15, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
